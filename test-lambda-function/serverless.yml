@@ -1,5 +1,4 @@
 service: test-lambda-function
-frameworkVersion: "=X.X.X"
 
 provider:
   name: aws
