@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  S3BucketName:
+    Description: A S3 bucket name contains layer.zip
+    Type: String
+
+Resources:
+  Nodejs8Runtime:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      Content:
+        S3Bucket: !Ref S3BucketName
+        S3Key: nodejs/8.10.0/layer.zip
+      Description: Layer for Node.js 8.10.0 Custom Runtime
+      LayerName: custom-runtime-nodejs-8
+
+Outputs:
+  Nodejs8RuntimeLayerARN:
+    Description: A lambda layer ARN of Node.js 8.10.0 Custom Runtime
+    Value: !Ref Nodejs8Runtime
+    Export:
+      Name: !Sub ${AWS::StackName}-runtime-nodejs8

@@ -1,0 +1,14 @@
+service: test-lambda-function
+frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: provided
+  stage: dev
+  region: ap-northeast-1
+
+functions:
+  hello:
+    handler: handler.hello
+    layers:
+      - 'Fn::ImportValue': dev-lambdalayers-nodejs-runtime-nodejs8
